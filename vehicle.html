@@ -20,10 +20,10 @@
             background-color: #f9f9f9;
         }
         .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
         section {
             padding: 80px 0;
         }
@@ -93,10 +93,11 @@
         /* Vehicle Listing Styles */
         #vehicle-listings {
             background: #f9f9f9;
+            padding-top: 140px; /* Adjusted to account for fixed header */
         }
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px; /* Reduced margin */
         }
         .section-title h2 {
             font-size: 36px;
@@ -114,18 +115,52 @@
             left: 50%;
             transform: translateX(-50%);
         }
+        .filter-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            justify-content: center; /* Center the dropdowns */
+        }
+        .filter-container label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+        .filter-container select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
         .vehicle-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-        .vehicle-card {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+    display: flex; /* Change to flexbox */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    gap: 30px;
+    justify-content: center; /* Center items horizontally */
+}
+
+.vehicle-card {
+    /* Keep your existing styles */
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    width: calc(33.33% - 20px); /* Target width for multiple items (adjust as needed) */
+    max-width: 400px; /* Optional: Set a maximum width for individual cards */
+}
+
+@media (max-width: 768px) {
+    .vehicle-card {
+        width: calc(50% - 15px);
+    }
+}
+
+@media (max-width: 480px) {
+    .vehicle-card {
+        width: 100%;
+    }
+}
         .vehicle-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
@@ -161,6 +196,9 @@
             width: 100%;
             text-align: center;
             padding: 10px; /* Adjusted padding for button consistency */
+        }
+        .hidden {
+            display: none !important;
         }
 
         /* Contact Section Styles */
@@ -209,65 +247,7 @@
             margin-bottom: 0;
         }
 
-        .contact-form input,
-        .contact-form textarea,
-        .contact-form select {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            font-size: 16px;
-            transition: border-color 0.3s ease;
-        }
-
-        .contact-form input:focus,
-        .contact-form textarea:focus,
-        .contact-form select:focus {
-            outline: none;
-            border-color: #3498db;
-            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
-        }
-
-        .contact-form textarea {
-            height: 150px;
-            resize: vertical;
-        }
-
-        .contact-form button {
-            margin-top: 20px;
-        }
-
-        /* Footer Styles */
-        footer {
-            background: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 30px 0;
-        }
-        footer p {
-            margin-bottom: 0;
-        }
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            .welcome-content h1 {
-                font-size: 36px;
-            }
-            .welcome-content p {
-                font-size: 18px;
-            }
-            section {
-                padding: 60px 0;
-            }
-            .contact-container {
-                grid-template-columns: 1fr;
-            }
-            .contact-form {
-                margin-top: 20px;
-            }
-        }
+        .contact-form input
     </style>
 </head>
 <body>
@@ -275,55 +255,80 @@
         <div class="container">
             <nav>
                 <a href="index.html" class="logo">Abad<span>Consultancy</span></a>
-              
+            </nav>
         </div>
     </header>
 
     <section id="vehicle-listings">
-        <div class="container">
-            <div class="section-title">
-                <h2>Vehicles For Sale</h2>
-                <p>Explore our selection of quality vehicles.  We can help you find the perfect match.</p>
-            </div>
-            <div class="vehicle-grid">
-                <div class="vehicle-card">
-                    <img src="assets/800.jpeg" alt="Vehicle 1">
-                    <h3>Maruti Alto 800</h3>
-                    <div class="vehicle-details">
-                        <p>Year: 2020</p>
-                        <p>Mileage: 35,000 km</p>
-                    </div>
-                    <p>Engine: 2.5L  3-Cylinder</p>
-                    <p class="vehicle-price">Rs. 250,000</p>
-                    <a href="#contact" class="btn">Contact Seller</a>
-                </div>
-                <div class="vehicle-card">
-                    <img src="assets/swift.jpeg" alt="Vehicle 2">
-                    <h3>Swift</h3>
-                    <div class="vehicle-details">
-                        <p>Year: 2022</p>
-                        <p>Mileage: 20,000 km</p>
-                    </div>
-                    <p>Engine: 1.5L Turbo</p>
-                    <p class="vehicle-price">Rs. 410,000</p>
-                    <a href="#contact" class="btn">Contact Seller</a>
-                </div>
-                <div class="vehicle-card">
-                    <img src="assets/i20.jpeg" alt="Vehicle 3">
-                    <h3>Hyundai i20</h3>
-                    <div class="vehicle-details">
-                        <p>Year: 2018</p>
-                        <p>Mileage: 60,000 km</p>
-                    </div>
-                    <p>Engine: 5.0L V8</p>
-                    <p class="vehicle-price">Rs. 450,000</p>
-                    <a href="#contact" class="btn">Contact Seller</a>
-                </div>
-                
-                </div>
+    <div class="container">
+        <div class="section-title">
+            <h2>Vehicles For Sale</h2>
+            <p>Explore our selection of quality vehicles. We can help you find the perfect match.</p>
         </div>
-    </section>
 
+        <div class="filter-container">
+            <div>
+                <label for="brand">Select Brand:</label>
+                <select id="brand" name="brand">
+                    <option value="">All Brands</option>
+                    <option value="Toyota">Toyota</option>
+                    <option value="Hyundai">Hyundai</option>
+                    <option value="Suzuki">Suzuki</option>
+                    <option value="Honda">Honda</option>
+                    <option value="Kia">Kia</option>
+                    <option value="Mahindra">Mahindra</option>
+                    <option value="Tata">Tata</option>
+                </select>
+            </div>
+            <div>
+                <label for="model">Select Model:</label>
+                <select id="model" name="model">
+                    <option value="">All Models</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="no-vehicles-found" style="display: none; text-align: center; padding: 20px; font-size: 18px; color: #777;">
+            No vehicles found matching your search criteria.
+        </div>
+
+        <div class="vehicle-grid">
+            <div class="vehicle-card" data-brand="Suzuki" data-model="Alto">
+                <img src="assets/800.jpeg" alt="Vehicle 1">
+                <h3>Maruti Alto 800</h3>
+                <div class="vehicle-details">
+                    <p>Year: 2020</p>
+                    <p>Mileage: 35,000 km</p>
+                </div>
+                <p>Engine: 2.5L  3-Cylinder</p>
+                <p class="vehicle-price">Rs. 250,000</p>
+                <a href="#contact" class="btn">Contact Seller</a>
+            </div>
+            <div class="vehicle-card" data-brand="Suzuki" data-model="Swift">
+                <img src="assets/swift.jpeg" alt="Vehicle 2">
+                <h3>Swift</h3>
+                <div class="vehicle-details">
+                    <p>Year: 2022</p>
+                    <p>Mileage: 20,000 km</p>
+                </div>
+                <p>Engine: 1.5L Turbo</p>
+                <p class="vehicle-price">Rs. 410,000</p>
+                <a href="#contact" class="btn">Contact Seller</a>
+            </div>
+            <div class="vehicle-card" data-brand="Hyundai" data-model="i20">
+                <img src="assets/i20.jpeg" alt="Vehicle 3">
+                <h3>Hyundai i20</h3>
+                <div class="vehicle-details">
+                    <p>Year: 2018</p>
+                    <p>Mileage: 60,000 km</p>
+                </div>
+                <p>Engine: 5.0L V8</p>
+                <p class="vehicle-price">Rs. 450,000</p>
+                <a href="#contact" class="btn">Contact Seller</a>
+            </div>
+        </div>
+    </div>
+</section>
     <section id="contact">
         <div class="container">
             <div class="section-title">
@@ -364,7 +369,7 @@
                         <div class="form-group">
                             <input type="tel" placeholder="Your Phone">
                         </div>
-                         <div class="form-group">
+                        <div class="form-group">
                             <select class="form-control" required>
                                 <option value="">Select Inquiry Type</option>
                                 <option value="vehicle-inquiry">Vehicle Inquiry</option>
@@ -386,5 +391,114 @@
             <p>&copy; 2023 AbadConsultancy. All Rights Reserved.</p>
         </div>
     </footer>
+
+    <script>
+        const vehicleData = {
+            "Toyota": ["Glanza", "Brezza"],
+            "Hyundai": ["i20", "i10", "Sonat"],
+            "Suzuki": ["Alto", "Swift", "Dzire", "Baleno", "Fronx", "K10", "Astar"],
+            "Honda": ["Amaze"],
+            "Kia": ["Seltos"],
+            "Mahindra": ["Brezza"], // Assuming Brezza is also a Mahindra model
+            "Tata": ["Punch", "Indica"]
+        };
+
+        const brandSelect = document.getElementById('brand');
+        const modelSelect = document.getElementById('model');
+        const vehicleGrid = document.querySelector('.vehicle-grid');
+        const vehicleCards = Array.from(vehicleGrid.querySelectorAll('.vehicle-card'));
+
+        function populateModels(brand) {
+            modelSelect.innerHTML = '<option value="">All Models</option>';
+            if (brand && vehicleData[brand]) {
+                vehicleData[brand].forEach(model => {
+                    const option = document.createElement('option');
+                    option.value = model;
+                    option.textContent = model;
+                    modelSelect.appendChild(option);
+                });
+            }
+        }
+
+        function filterVehicles(selectedBrand, selectedModel) {
+            vehicleCards.forEach(card => {
+                const cardBrand = card.dataset.brand;
+                const cardModel = card.dataset.model;
+                const brandMatch = !selectedBrand || selectedBrand === cardBrand;
+                const modelMatch = !selectedModel || selectedModel === cardModel;
+
+                if (brandMatch && modelMatch) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        brandSelect.addEventListener('change', function() {
+            const selectedBrand = this.value;
+            populateModels(selectedBrand);
+            filterVehicles(selectedBrand, modelSelect.value);
+        });
+
+        modelSelect.addEventListener('change', function() {
+            filterVehicles(brandSelect.value, this.value);
+        });
+
+        // Initially populate the data-brand and data-model attributes
+        vehicleCards.forEach(card => {
+            const heading = card.querySelector('h3').textContent;
+            let brand = '';
+            let model = '';
+
+            if (heading.includes('Maruti Alto')) {
+                brand = 'Suzuki';
+                model = 'Alto';
+            } else if (heading.includes('Swift')) {
+                brand = 'Suzuki';
+                model = 'Swift';
+            } else if (heading.includes('Hyundai i20')) {
+                brand = 'Hyundai';
+                model = 'i20';
+            }
+            // Add more conditions here for your other vehicle models
+            // Example:
+            // else if (heading.includes('Honda Amaze')) {
+            //     brand = 'Honda';
+            //     model = 'Amaze';
+            // }
+
+            card.dataset.brand = brand.trim();
+            card.dataset.model = model.trim();
+        });
+
+        // Initially filter to show all
+        filterVehicles('', '');
+
+        function filterVehicles(selectedBrand, selectedModel) {
+    let visibleCount = 0;
+    vehicleCards.forEach(card => {
+        const cardBrand = card.dataset.brand;
+        const cardModel = card.dataset.model;
+        const brandMatch = !selectedBrand || selectedBrand === cardBrand;
+        const modelMatch = !selectedModel || selectedModel === cardModel;
+
+        if (brandMatch && modelMatch) {
+            card.classList.remove('hidden');
+            visibleCount++; // Increment the counter for visible vehicles
+        } else {
+            card.classList.add('hidden');
+        }
+    });
+
+    const noVehiclesMessage = document.getElementById('no-vehicles-found');
+    if (visibleCount === 0) {
+        noVehiclesMessage.style.display = 'block'; // Show the message if no vehicles are visible
+    } else {
+        noVehiclesMessage.style.display = 'none'; // Hide the message if vehicles are visible
+    }
+}
+
+    </script>
 </body>
 </html>
